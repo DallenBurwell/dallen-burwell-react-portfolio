@@ -8,12 +8,23 @@ export default class PortfolioContainer extends Component {
         
         this.state = {
             pageTitle: "Welcome to my portfolio",
+            isLoading: false,
             data: [
-                {title: "SureSteel"},
-                {title: "Steel Concepts"}, 
-                {title: "Weber Basin"}
+                {title: "SureSteel", category: "Steel Work"},
+                {title: "Steel Concepts", category: "Steel Work"}, 
+                {title: "Weber Basin", category: "District"},
+                {title: "Weber Innovation", category: "Education"}
             ]
         }
+        this.handleFilter = this.handleFilter.bind(this);
+    }
+
+    handleFilter(filter) {
+        this.setState({
+            data: this.state.data.filter(item => {
+                return item.category === filter;
+            })
+        })
     }
 
     portfolioItems() {
@@ -23,12 +34,28 @@ export default class PortfolioContainer extends Component {
         })
     }
 
+    
     render() {
+        if (this.state.isLoading) {
+            return <div>Loading...</div>
+        }
+
         return (
             <div>
                 <h2>{this.state.pageTitle}</h2>
 
+                <button onClick={() => this.handleFilter("Steel Work")}>
+                    Steel Work
+                </button>
+                <button onClick={() => this.handleFilter("District")}>
+                    District
+                </button>
+                <button onClick={() => this.handleFilter("Education")}>
+                    Education
+                </button>
+
                 {this.portfolioItems()}
+
 
             </div>
         )
