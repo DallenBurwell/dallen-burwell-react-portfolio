@@ -10,10 +10,10 @@ export default class PortfolioContainer extends Component {
             pageTitle: "Welcome to my portfolio",
             isLoading: false,
             data: [
-                {title: "SureSteel", category: "Steel Work"},
-                {title: "Steel Concepts", category: "Steel Work"}, 
-                {title: "Weber Basin", category: "District"},
-                {title: "Weber Innovation", category: "Education"}
+                {title: "SureSteel", category: "Steel Work", slug: "suresteel"},
+                {title: "Steel Concepts", category: "Steel Work", slug: "steel-concepts"}, 
+                {title: "Weber Basin", category: "District", slug: "weber-basin"},
+                {title: "Weber Innovation", category: "Education", slug: "weber-innovation"}
             ]
         }
         this.handleFilter = this.handleFilter.bind(this);
@@ -30,7 +30,7 @@ export default class PortfolioContainer extends Component {
     portfolioItems() {
 
         return this.state.data.map(item => {
-            return <PortfolioItem title={item.title}/>;
+            return <PortfolioItem title={item.title} url={"www.google.com"} slug={item.slug} />;
         })
     }
 
