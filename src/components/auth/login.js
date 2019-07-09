@@ -4,8 +4,11 @@ export default class Login extends Component {
     render() {
         return (
             <div>
-                <h1>Form Should go here</h1>
-                <div>Button</div>
+                <h1>LOGIN TO ACCESS YOUR DASHBOARD</h1>
+                <form>
+                    <input type="text" />
+                    <input type="password" />
+                </form>
             </div>
         )
     }
