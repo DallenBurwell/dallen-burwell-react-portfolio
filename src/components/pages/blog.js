@@ -22,6 +22,14 @@ class Blog extends Component {
         window.addEventListener("scroll", this.onScroll, false);
         this.handleNewBlogClick = this.handleNewBlogClick.bind(this);
         this.handleModalClose = this.handleModalClose.bind(this);
+        this.handleSuccessfullNewBlogSubmission = this.handleSuccessfullNewBlogSubmission.bind(this);
+    }
+
+    handleSuccessfullNewBlogSubmission(blog) {
+        this.setState({
+            blogModalIsOpen: false,
+            blogItems: [blog].concat(this.state.blogItems)
+        })
     }
 
     handleModalClose() {
@@ -81,14 +89,15 @@ componentWillUnmount() {
         });
         return (
             <div className="blog-container">
-            <BlogModal 
+            <BlogModal
+                handleSuccessfullNewBlogSubmission  = {this.handleSuccessfullNewBlogSubmission}
                 modalIsOpen={this.state.blogModalIsOpen}
                 handleModalClose={this.handleModalClose}
             />
 
             <div className="new-blog-link">
                 <a onClick={this.handleNewBlogClick}>
-                    Open Modal
+                    <FontAwesomeIcon icon="plus" />
                 </a>
             </div>
                 <div className="content-container">
